@@ -1,6 +1,5 @@
 import { useContext } from 'react';
-import { WidgetContext, buildAssetUrl } from '../lib/context';
-import bg from "../../assets/bg.svg";
+import { WidgetContext } from '../lib/context';
 
 function getThemeStyles(theme: 'light' | 'dark' | 'auto') {
   const isDark =
@@ -60,7 +59,7 @@ export function Widget() {
         <div
           style={{
             ...currentSize,
-            backgroundImage: `url(${bg})`,
+            backgroundImage: `url("/bg.svg")`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
