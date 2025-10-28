@@ -59,7 +59,6 @@ export function Widget() {
         <div
           style={{
             ...currentSize,
-            backgroundImage: `url("/bg.svg")`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
@@ -71,6 +70,7 @@ export function Widget() {
             display: 'flex',
             flexDirection: 'column',
           }}
+          className='widget-bg'
         >
           <div
             style={{
