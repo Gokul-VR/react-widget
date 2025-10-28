@@ -17,6 +17,3 @@
 .widget-content {
     @apply p-4;
 }
-.widget-bg{
-    background-image: url("/bg.svg");
-}

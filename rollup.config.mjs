@@ -11,6 +11,7 @@ import nodePolyfills from 'rollup-plugin-polyfill-node';
 import postcss from 'rollup-plugin-postcss';
 import copy from 'rollup-plugin-copy';
 import tsConfigPaths from 'rollup-plugin-tsconfig-paths';
+import image from '@rollup/plugin-image';
 
 const args = parseArgs({
   options: {
@@ -28,7 +29,7 @@ const args = parseArgs({
 
 const env = args.values.environment;
 const production = env === 'production';
-let environmentVariablesPath = [ './.env.development' ];
+let environmentVariablesPath = ['./.env.development'];
 
 console.log(`Building widget for ${env} environment...`);
 
@@ -59,6 +60,7 @@ export default {
     tsConfigPaths({
       tsConfigPath: './tsconfig.json',
     }),
+    image(),
     replace({ preventAssignment: true }),
     typescript({
       tsconfig: './tsconfig.json',
@@ -92,11 +94,10 @@ export default {
     }),
     copy({
       targets: [
-        { src: 'public/**/*', dest: 'dist' },
+        { src: 'src/assets/**/*', dest: 'dist/assets' }
       ],
-      copyOnce: true,
-      verbose: true,
-    }),
+      hook: 'buildStart' // or 'writeBundle' for copy after bundle is written
+    }), ,
     commonjs(),
     nodePolyfills({
       exclude: ['crypto'],

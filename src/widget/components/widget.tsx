@@ -1,5 +1,8 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { WidgetContext } from '../lib/context';
+import bgImage from '../../assets/bg.png';
+import catersweet from '../../assets/catersweet.svg';
+import StepOne from './stepOne';
 
 function getThemeStyles(theme: 'light' | 'dark' | 'auto') {
   const isDark =
@@ -20,6 +23,7 @@ function getThemeStyles(theme: 'light' | 'dark' | 'auto') {
 
 export function Widget() {
   const { isOpen, setIsOpen, config } = useContext(WidgetContext);
+  const containerRef = useRef<HTMLDivElement>(null);
   const positionStyles = {
     'bottom-right': { bottom: '20px', right: '20px' },
     'bottom-left': { bottom: '20px', left: '20px' },
@@ -29,8 +33,8 @@ export function Widget() {
 
   const sizeStyles = {
     small: { width: '17.5rem', height: '21.875rem' },
-    medium: { width: '25.75rem', height: '25rem' },
-    large: { width: '25.75rem', height: '31.25rem' },
+    medium: { width: '27.75rem', height: '35rem' },
+    large: { width: '27.75rem', height: '35rem' },
   };
 
   const positionKey = (config.position ||
@@ -45,8 +49,46 @@ export function Widget() {
   if (config.debug) {
     console.log('Widget state:', { isOpen, config });
   }
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent | globalThis.MouseEvent) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener(
+        'mousedown',
+        handleClickOutside as EventListener,
+      );
+    }
+
+    return () => {
+      document.removeEventListener(
+        'mousedown',
+        handleClickOutside as EventListener,
+      );
+    };
+  }, [isOpen, setIsOpen]);
+
+  // type cateringTypes = {
+  //   icon: string;
+  //   label: string;
+  // };
+  // const cateringItems = [
+  //   { label: 'Corporate', icon: CorporateIcon },
+  //   { label: 'Wedding', icon: WeddingIcon },
+  //   { label: 'Private Parties', icon: PrivatePartiesIcon },
+  //   { label: 'Outdoor', icon: OutdoorIcon },
+  //   { label: 'Fund Raising', icon: FundRaisingIcon },
+  //   { label: 'Others', icon: OthersIcon },
+  // ];
   return (
     <div
+      ref={containerRef}
       style={{
         position: 'fixed',
         ...currentPosition,
@@ -59,6 +101,7 @@ export function Widget() {
         <div
           style={{
             ...currentSize,
+            backgroundImage: `url(${bgImage})`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
@@ -70,58 +113,24 @@ export function Widget() {
             display: 'flex',
             flexDirection: 'column',
           }}
-          className='widget-bg'
         >
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginBottom: '16px',
-            }}
-          >
-            <h3 style={{ margin: 0, fontSize: '18px', fontWeight: '600' }}>
-              Hello from React Widget 👋
-            </h3>
-            <button
-              onClick={() => setIsOpen(false)}
-              style={{
-                background: 'transparent',
-                border: 'none',
-                cursor: 'pointer',
-                fontSize: '20px',
-                color: '#fff',
-                opacity: 0.7,
-                padding: '4px',
-                borderRadius: '4px',
-              }}
-            >
-              ✖
-            </button>
-          </div>
-          <div>
-            <button className='flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-slate-700 text-white hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors'>
-              Back
-            </button>
-          </div>
+          <StepOne />
         </div>
       ) : (
         <button
           style={{
-            background: themeStyles.buttonBg,
             color: 'white',
             border: 'none',
             borderRadius: '50%',
-            width: '60px',
-            height: '60px',
+            width: '70px',
+            height: '70px',
             cursor: 'pointer',
-            boxShadow: themeStyles.buttonShadow,
             transition: 'transform 0.2s ease',
             textAlign: 'center',
           }}
           onClick={() => setIsOpen(true)}
         >
-          💬
+          <img src={catersweet} />
         </button>
       )}
     </div>
