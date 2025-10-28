@@ -1,15 +1,4 @@
-# React Embeddable Widget Starter by MakerKit
-
-This is a starter template for creating embeddable widgets with React by [MakerKit](https://makerkit.dev).
-
-To learn more about how we created this template, check out our [blog post](https://makerkit.dev/blog/tutorials/embeddable-widgets-react).
-
-## ✨ Features
-
-- 🛡️ **Fully Isolated** - Shadow DOM encapsulation prevents style conflicts
-- 🚀 **Modern Stack** - Built with React 19, TypeScript, and Vite
-- 🔌 **Simple Integration** - Single line of code to embed
-- 🛠️ **Developer Experience** - Hot reload, TypeScript, and modern tooling
+# React Embeddable Widget
 
 ## Getting Started
 
@@ -18,7 +7,6 @@ To get started, follow these steps:
 1. Clone this repository to your local machine.
 2. Install the dependencies by running `npm install` or `pnpm install` depending on your preferred package manager.
 3. Run the development server by running `npm run dev` or `pnpm dev`.
-4. Open your browser and navigate to `http://localhost:3000` to see the widget in action.
 
 ### Structure
 
@@ -48,7 +36,7 @@ The project is structured as follows:
 To clone the repository, you can use the following command:
 
 ```bash
-git clone https://github.com/makerkit/react-embeddable-widget.git
+git clone https://github.com/Gokul-VR/embeddable-widget.git
 ```
 
 ### Installing Dependencies
@@ -141,14 +129,3 @@ If your widget is hosted on a CDN, you can use the following script tag:
 <script async src="https://example.com/widget.js"></script>
 ```
 
-## Contributing
-
-We welcome contributions to this project. If you find a bug or have a suggestion for improvement, please open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
-
-## About Makerkit, the production-ready SaaS Starter Kit
-
-[Makerkit](https://makerkit.dev) is a SaaS Starter Kit for building a production-ready SaaS application. Check it out for more information.

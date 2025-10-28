@@ -9,7 +9,6 @@ import { parseArgs } from 'node:util';
 import injectProcessEnv from 'rollup-plugin-inject-process-env';
 import nodePolyfills from 'rollup-plugin-polyfill-node';
 import postcss from 'rollup-plugin-postcss';
-import copy from 'rollup-plugin-copy';
 import tsConfigPaths from 'rollup-plugin-tsconfig-paths';
 
 const args = parseArgs({
@@ -89,13 +88,6 @@ export default {
       inject: {
         insertAt: 'top',
       },
-    }),
-    copy({
-      targets: [
-        { src: 'public/**/*', dest: 'dist' },
-      ],
-      copyOnce: true,
-      verbose: true,
     }),
     commonjs(),
     nodePolyfills({

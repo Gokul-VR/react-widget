@@ -12,7 +12,6 @@ export interface WidgetConfig {
     notifications?: boolean;
     analytics?: boolean;
   };
-  assetBaseUrl?: string;
 }
 
 export interface WidgetParams {
@@ -84,7 +83,6 @@ export class WidgetExtractor {
       debug: this.getBooleanParam('debug', false),
       customStyles: this.getCustomStyles(),
       features: this.getFeatures(),
-      assetBaseUrl: this.getAssetBaseUrl(),
     };
   }
 
@@ -135,21 +133,6 @@ export class WidgetExtractor {
       return size as any;
     }
     return 'medium';
-  }
-
-  private getAssetBaseUrl(): string {
-    // Derive absolute base URL from the widget script src
-    if (!this.script || !this.script.src) return '/';
-    try {
-      const url = new URL(this.script.src, window.location.href);
-      // Ensure trailing slash for safe concatenation
-      const pathname = url.pathname.endsWith('/')
-        ? url.pathname
-        : url.pathname.substring(0, url.pathname.lastIndexOf('/') + 1);
-      return `${url.origin}${pathname}`;
-    } catch {
-      return '/';
-    }
   }
 
   private getCustomStyles(): Record<string, string> {

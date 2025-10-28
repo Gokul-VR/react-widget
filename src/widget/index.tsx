@@ -66,9 +66,7 @@ function injectStyle(shadowRoot: HTMLElement) {
   const link = document.createElement('link');
   link.rel = 'stylesheet';
   const fileName = process.env.WIDGET_NAME || 'widget';
-  // Try to build an absolute URL from the script's base to ensure external hosts can fetch the CSS
-  const base = new WidgetExtractor().getConfig().assetBaseUrl || '/';
-  link.href = process.env.WIDGET_CSS_URL || `${base}${fileName}.css`;
+  link.href = process.env.WIDGET_CSS_URL || `/${fileName}.css`;
   shadowRoot.appendChild(link);
 }
 
