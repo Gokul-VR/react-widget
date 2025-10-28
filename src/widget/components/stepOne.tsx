@@ -138,7 +138,10 @@ function CategoryCard({
       <div className='group flex flex-col items-center justify-between gap-2 '>
         <div
           className='w-[5.79094rem] min-h-[7.25813rem] flex items-center justify-center flex-shrink-0 bg-[rgba(62,62,62,0.5)] border border-[#C2C2C2] rounded-[10px] hover:bg-[rgba(62,62,62,0.7)] transition-all duration-200 hover:scale-[1.02] hover:border-white/50 backdrop-blur-sm active:scale-95'
-          onClick={handleNext}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleNext();
+          }}
         >
           {icon}
         </div>

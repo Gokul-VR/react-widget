@@ -1,16 +1,15 @@
-import { createContext } from 'react';
+import { createContext, Dispatch, SetStateAction } from 'react';
 import { WidgetConfig } from '../lib/widget-config';
 
 export interface WidgetContextType {
   isOpen: boolean;
-  setIsOpen: (value: boolean) => void;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
   config: WidgetConfig;
 }
 
 export const WidgetContext = createContext<WidgetContextType>({
   isOpen: false,
   setIsOpen: () => {},
-  // Default values; will be overridden by provider
   config: { clientKey: '' },
 });
 
