@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Widget Test Page</title>
+  <link rel="stylesheet" href="./../dist/widget.css">
+</head>
+<body>
+<h1>Enhanced Widget Test Page</h1>
+<p>This page tests the enhanced widget integration with multiple configuration options.</p>
+
+<!-- Basic widget -->
+<h2>Basic Widget</h2>
+<script async src="https://embeddable-widget-snowy.vercel.app/widget.js" data-client-key="test-key-basic"></script>
+
+<!-- Advanced widget with custom configuration -->
+<h2>Advanced Widget</h2>
+<script async src="https://embeddable-widget-snowy.vercel.app/widget.js" 
+        data-client-key="test-key-advanced"
+        data-theme="dark"
+        data-position="bottom-left"
+        data-size="large"
+        data-language="en"
+        data-debug="true"
+        data-chat="true"
+        data-notifications="true"
+        data-analytics="true"
+        data-style-primary-color="#ff6b6b"
+        data-style-border-radius="20px">
+</script>
+
+<!-- Light theme widget -->
+<h2>Light Theme Widget</h2>
+<script async src="https://embeddable-widget-snowy.vercel.app/widget.js" 
+        data-client-key="test-key-light"
+        data-theme="light"
+        data-position="top-right"
+        data-size="small">
+</script>
+
+</body>
+</html>
