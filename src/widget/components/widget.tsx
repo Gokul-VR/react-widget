@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { WidgetContext } from '../lib/context';
+import { WidgetContext, buildAssetUrl } from '../lib/context';
 
 function getThemeStyles(theme: 'light' | 'dark' | 'auto') {
   const isDark =
@@ -33,8 +33,10 @@ export function Widget() {
     large: { width: '25.75rem', height: '31.25rem' },
   };
 
-  const currentPosition = positionStyles[config.position || 'bottom-right'];
-  const currentSize = sizeStyles[config.size || 'medium'];
+  const positionKey = (config.position || 'bottom-right') as keyof typeof positionStyles;
+  const sizeKey = (config.size || 'medium') as keyof typeof sizeStyles;
+  const currentPosition = positionStyles[positionKey];
+  const currentSize = sizeStyles[sizeKey];
 
   // Apply theme-based styling
   const themeStyles = getThemeStyles(config.theme || 'auto');
@@ -56,7 +58,7 @@ export function Widget() {
         <div
           style={{
             ...currentSize,
-            backgroundImage: 'url(/bg.svg)',
+            backgroundImage: `url(${buildAssetUrl(config.assetBaseUrl, 'bg.svg')})`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
