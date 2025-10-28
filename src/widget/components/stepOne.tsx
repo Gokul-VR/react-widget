@@ -1,12 +1,11 @@
 import React from 'react';
 import cookImage from '../../assets/cook.png';
-
-const StepOne = () => {
+type StepOneProps = {
+  handleNext: () => void;
+};
+const StepOne: React.FC<StepOneProps> = ({ handleNext }) => {
   return (
     <>
-      <div className='w-full h-[0.6rem] bg-[#D9D9D9] rounded-full mb-5 sm:mb-6 flex  items-center'>
-        <div className='w-[0.6rem] h-[0.4rem] bg-[#25C196] rounded-full ml-0.5 '></div>
-      </div>
       <div className='flex flex-row gap-2 '>
         <img src={cookImage} className='w-[7.8rem] h-[7.8rem]' />
         <div className='flex flex-col -ml-[0.9rem] gap-[0.7rem]'>
@@ -39,12 +38,36 @@ const StepOne = () => {
         </div>
       </div>
       <div className='grid grid-cols-3 gap-4 px-[2.3rem] mt-[0.8rem]'>
-        <CategoryCard icon={<CorporateIcon />} label='Corporate' />
-        <CategoryCard icon={<WeddingIcon />} label='Wedding' />
-        <CategoryCard icon={<PrivatePartiesIcon />} label='Private Parties' />
-        <CategoryCard icon={<OutdoorIcon />} label='Outdoor' />
-        <CategoryCard icon={<FundRaisingIcon />} label='Fund Raising' />
-        <CategoryCard icon={<OthersIcon />} label='Others' />
+        <CategoryCard
+          icon={<CorporateIcon />}
+          label='Corporate'
+          handleNext={handleNext}
+        />
+        <CategoryCard
+          icon={<WeddingIcon />}
+          label='Wedding'
+          handleNext={handleNext}
+        />
+        <CategoryCard
+          icon={<PrivatePartiesIcon />}
+          label='Private Parties'
+          handleNext={handleNext}
+        />
+        <CategoryCard
+          icon={<OutdoorIcon />}
+          label='Outdoor'
+          handleNext={handleNext}
+        />
+        <CategoryCard
+          icon={<FundRaisingIcon />}
+          label='Fund Raising'
+          handleNext={handleNext}
+        />
+        <CategoryCard
+          icon={<OthersIcon />}
+          label='Others'
+          handleNext={handleNext}
+        />
       </div>
       <div className='flex items-center justify-center gap-2 text-white text-xs mt-[2rem]'>
         <span
@@ -101,18 +124,22 @@ const StepOne = () => {
 };
 export default StepOne;
 
-
 function CategoryCard({
   icon,
   label,
+  handleNext,
 }: {
   icon: React.ReactNode;
   label: string;
+  handleNext: () => void;
 }) {
   return (
     <>
       <div className='group flex flex-col items-center justify-between gap-2 '>
-        <div className='w-[5.79094rem] min-h-[7.25813rem] flex items-center justify-center flex-shrink-0 bg-[rgba(62,62,62,0.5)] border border-[#C2C2C2] rounded-[10px] hover:bg-[rgba(62,62,62,0.7)] transition-all duration-200 hover:scale-[1.02] hover:border-white/50 backdrop-blur-sm active:scale-95'>
+        <div
+          className='w-[5.79094rem] min-h-[7.25813rem] flex items-center justify-center flex-shrink-0 bg-[rgba(62,62,62,0.5)] border border-[#C2C2C2] rounded-[10px] hover:bg-[rgba(62,62,62,0.7)] transition-all duration-200 hover:scale-[1.02] hover:border-white/50 backdrop-blur-sm active:scale-95'
+          onClick={handleNext}
+        >
           {icon}
         </div>
         <span
