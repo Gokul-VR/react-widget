@@ -1,42 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Widget Test Page</title>
-  <link rel="stylesheet" href="./../dist/widget.css">
-</head>
-<body>
-<h1>Enhanced Widget Test Page</h1>
-<p>This page tests the enhanced widget integration with multiple configuration options.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Widget Test Page</title>
+    <link rel="stylesheet" href="./../dist/widget.css" />
+    <link rel="stylesheet" href="https://react-widget-sable.vercel.app.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #7b7b7b;
+        font-family: 'Georgia', 'Times New Roman', Times, serif;
+        color: #fff;
+      }
 
-<!-- Basic widget -->
-<h2>Basic Widget</h2>
-<script async src="./../dist/widget.js" data-client-key="test-key-basic"></script>
+      /* Hero Main Section */
+      .hero {
+        margin-top: 40vh;
+        padding-left: 64px;
+      }
+      .hero-title {
+        font-size: 4.3rem;
+        font-family: 'Georgia', serif;
+        font-weight: 400;
+        letter-spacing: 1.4px;
+        line-height: 1.07;
+        color: #fff;
+        margin-bottom: 16px;
+        margin-top: 0;
+      }
+      .hero-sub {
+        font-size: 1.11rem;
+        margin-top: 40px;
+        color: #f3f3f3;
+        letter-spacing: 0.2px;
+        font-family: 'Georgia', serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero">
+      <h1 class="hero-title" style="margin-bottom: 0">
+        View Our<br />New Menu
+      </h1>
+    </div>
+    <script
+      async
+      src="./../dist/widget.js"
+      data-client-key="test-key-basic"
+    ></script>
+    <!-- <script
+      async
+      src="https://react-widget-sable.vercel.app/widget.js"
+      data-client-key="test-key-advanced"
+      data-theme="dark"
+      data-position="bottom-right"
+      data-size="medium"
+      data-language="en"
+      data-debug="true"
+      data-chat="true"
+      data-notifications="true"
+      data-analytics="true"
+      data-style-primary-color="#ff6b6b"
+      data-style-border-radius="20px"
+    ></script> -->
 
-<!-- Advanced widget with custom configuration -->
-<h2>Advanced Widget</h2>
-<script async src="https://react-widget-sable.vercel.app/widget.js" 
-        data-client-key="test-key-advanced"
-        data-theme="dark"
-        data-position="bottom-left"
-        data-size="medium"
-        data-language="en"
-        data-debug="true"
-        data-chat="true"
-        data-notifications="true"
-        data-analytics="true"
-        data-style-primary-color="#ff6b6b"
-        data-style-border-radius="20px">
-</script>
-
-<!-- Light theme widget -->
-<!-- <h2>Light Theme Widget</h2>
+    <!-- Light theme widget -->
+    <!-- <h2>Light Theme Widget</h2>
 <script async src="https://embeddable-widget-snowy.vercel.app/widget.js" 
         data-client-key="test-key-light"
         data-theme="light"
         data-position="top-right"
         data-size="small">
 </script> -->
-
-</body>
+  </body>
 </html>
