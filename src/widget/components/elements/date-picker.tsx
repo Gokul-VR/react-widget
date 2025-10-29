@@ -72,7 +72,7 @@ export function DatePicker({}) {
       days.push(
         <div
           key={`prev-${i}`}
-          className='flex h-[1.8rem] w-[1.8rem]  items-center justify-center rounded-full bg-[#3E3E3E]'
+          className='flex md:h-[1.8rem] h-[1.5rem] md:w-[1.8rem] w-[1.5rem] items-center justify-center rounded-full bg-[#3E3E3E]'
         >
           <span className='text-xs text-[#6E6E6E]'>{daysInPrevMonth - i}</span>
         </div>,
@@ -98,7 +98,7 @@ export function DatePicker({}) {
           onClick={() =>
             setSelectedDate(new Date(currentYear, currentMonth, day))
           }
-          className={`flex h-[1.8rem] w-[1.8rem]  items-center justify-center rounded-full transition-all ${
+          className={`flex md:h-[1.8rem] h-[1.5rem] md:w-[1.8rem] w-[1.5rem] items-center justify-center rounded-full transition-all ${
             isSelected
               ? 'bg-[#6200EE]'
               : isToday
@@ -122,7 +122,7 @@ export function DatePicker({}) {
       days.push(
         <div
           key={`next-${nextDay}`}
-          className='flex h-[1.8rem] w-[1.8rem] items-center justify-center rounded-full bg-[#3E3E3E]'
+          className='flex md:h-[1.8rem] h-[1.5rem] md:w-[1.8rem] w-[1.5rem] items-center justify-center rounded-full bg-[#3E3E3E]'
         >
           <span className='text-xs text-[#6E6E6E]'>{nextDay}</span>
         </div>,
@@ -133,7 +133,7 @@ export function DatePicker({}) {
   };
 
   return (
-    <div className='mx-auto w-[19.75rem]  rounded-[1rem] border border-white bg-[rgba(62,62,62,0.5)] p-3 shadow-[0_0_11.412px_2.282px_rgba(191,191,191,0.25)] backdrop-blur-sm '>
+    <div className='mx-auto w-[16.75rem] md:w-[19.75rem] rounded-[1rem] border border-white bg-[rgba(62,62,62,0.5)] p-3 shadow-[0_0_11.412px_2.282px_rgba(191,191,191,0.25)] backdrop-blur-sm '>
       <div className='mb-4 flex items-center justify-between'>
         <button
           onClick={handlePrevMonth}

@@ -8,8 +8,8 @@ const StepThree = ({}) => {
   return (
     <>
       <div className='flex flex-row gap-2  '>
-        <img src={cookImage} className='w-[7.8rem] h-[7.8rem]' />
-        <div className='flex flex-col -ml-[0.9rem] gap-[0.7rem]'>
+        <img src={cookImage} className='w-[7.4rem] h-[7.4rem] md:w-[7.8rem] md:h-[7.8rem]' />
+        <div className='flex flex-col md:-ml-[0.9rem] ml-0 gap-[0.7rem]'>
           <div className='-ml-[0.9rem]'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -28,7 +28,7 @@ const StepThree = ({}) => {
             </svg>
           </div>
           <h1
-            className='text-white text-xl sm:text-2xl font-bold mb-7 sm:mb-8 text-left leading-[1.25] '
+            className='text-white text-[1rem] sm:text-2xl font-bold mb-7 sm:mb-8 text-left leading-[1.25] '
             style={{
               fontFamily:
                 'Poppins, -apple-system, Roboto, Helvetica, sans-serif',
@@ -38,7 +38,7 @@ const StepThree = ({}) => {
           </h1>
         </div>
       </div>
-      <div className='mb-[0.65rem]'>
+      <div className='mb-[0.695rem]'>
         <DatePicker />
       </div>
     </>

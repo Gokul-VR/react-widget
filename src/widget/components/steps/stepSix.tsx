@@ -7,8 +7,12 @@ const StepSix = ({}) => {
   return (
     <>
       <div className='flex flex-row gap-2 '>
-        <img src={cookImage} className='w-[7.8rem] h-[7.8rem]' />
-        <div className='flex flex-col -ml-[0.9rem] gap-[0.7rem]'>
+        <img
+          src={cookImage}
+          className='w-[7.4rem] h-[7.4rem] md:w-[7.8rem] md:h-[7.8rem]'
+        />
+
+        <div className='flex flex-col  md:-ml-[0.9rem] gap-[0.7rem]'>
           <div className='-ml-[0.9rem]'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -27,17 +31,17 @@ const StepSix = ({}) => {
             </svg>
           </div>
           <h1
-            className='text-white text-xl sm:text-2xl font-bold mb-7 sm:mb-8 text-left leading-[1.25] '
+            className='text-white text-[1rem] sm:text-2xl font-bold mb-7 sm:mb-8 text-left leading-[1.25] '
             style={{
               fontFamily:
                 'Poppins, -apple-system, Roboto, Helvetica, sans-serif',
             }}
           >
-            Share your details, we will reach out soon..
+            Any specific requirements!
           </h1>
         </div>
       </div>
-      <div className='px-[1rem] mb-[8.175rem]'>
+      <div className='px-[0.6rem] md:px-[1rem] mb-[6.75rem] md:mb-[8.175rem] mt-2 md:mt-0'>
         <textarea
           value={requirements}
           onChange={(e) => setRequirements(e.target.value)}

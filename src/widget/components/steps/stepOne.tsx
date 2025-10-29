@@ -13,8 +13,8 @@ const StepOne: React.FC<StepOneProps> = ({ handleNext }) => {
   return (
     <>
       <div className='flex flex-row gap-2 '>
-        <img src={cookImage} className='w-[7.8rem] h-[7.8rem]' />
-        <div className='flex flex-col -ml-[0.9rem] gap-[0.7rem]'>
+        <img src={cookImage} className='w-[7.4rem] h-[7.4rem] md:w-[7.8rem] md:h-[7.8rem]' />
+        <div className='flex flex-col md:-ml-[0.9rem] ml-0 gap-[0.7rem]'>
           <div className='-ml-[0.9rem]'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -33,7 +33,7 @@ const StepOne: React.FC<StepOneProps> = ({ handleNext }) => {
             </svg>
           </div>
           <h1
-            className='text-white text-xl sm:text-2xl font-bold mb-7 sm:mb-8 text-left leading-[1.25] '
+            className='text-white text-[1rem] sm:text-2xl font-bold mb-9 md:mb-8 text-left leading-[1.25] '
             style={{
               fontFamily:
                 'Poppins, -apple-system, Roboto, Helvetica, sans-serif',
@@ -43,7 +43,7 @@ const StepOne: React.FC<StepOneProps> = ({ handleNext }) => {
           </h1>
         </div>
       </div>
-      <div className='grid grid-cols-3 gap-4 px-[2rem] mb-[0.9rem]'>
+      <div className='grid grid-cols-3 gap-6 md:gap-4 px-2 md:px-[2rem] mb-[1.8rem] md:mb-[0.9rem] mt-2 md:mt-0'>
         <CategoryCard
           icon={CorporateImage}
           label='Corporate'
@@ -91,18 +91,18 @@ function CategoryCard({
 }) {
   return (
     <>
-      <div className='group flex flex-col items-center justify-between gap-[0.7rem]'>
+      <div className='group flex flex-col items-center justify-between gap-[0.7rem] '>
         <div
-          className='w-[5.79094rem] min-h-[7.25813rem] flex items-center justify-center flex-shrink-0 bg-[rgba(62,62,62,0.5)] border border-[#C2C2C2] rounded-[10px] hover:bg-[rgba(62,62,62,0.7)] transition-all duration-200 hover:scale-[1.02] hover:border-white/50 backdrop-blur-sm active:scale-95 hover:cursor-pointer'
+          className='md:w-[5.79094rem] md:min-h-[7.25813rem] w-[4.79094rem] min-h-[5.25813rem] flex items-center justify-center flex-shrink-0 bg-[rgba(62,62,62,0.5)] border border-[#C2C2C2] rounded-[10px] hover:bg-[rgba(62,62,62,0.7)] transition-all duration-200 hover:scale-[1.02] hover:border-white/50 backdrop-blur-sm active:scale-95 hover:cursor-pointer'
           onClick={(e) => {
             e.stopPropagation();
             handleNext();
           }}
         >
-          <img src={icon} alt='type' />
+          <img src={icon} alt='type' className='w-10 md:w-auto'/>
         </div>
         <span
-          className='text-white text-[0.9rem] font-[600] text-center'
+          className='text-white md:text-[0.9rem] text-[0.7rem] font-[600] text-center'
           style={{
             fontFamily: 'Poppins, -apple-system, Roboto, Helvetica, sans-serif',
             lineHeight: '96%',

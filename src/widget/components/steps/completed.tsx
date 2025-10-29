@@ -4,8 +4,11 @@ const Completed = ({}) => {
   return (
     <>
       <div className='flex flex-row gap-2 '>
-        <img src={cookImage} className='w-[7.8rem] h-[7.8rem]' />
-        <div className='flex flex-col -ml-[0.9rem] gap-[0.7rem]'>
+        <img
+          src={cookImage}
+          className='w-[7.4rem] h-[7.4rem] md:w-[7.8rem] md:h-[7.8rem]'
+        />
+        <div className='flex flex-col md:-ml-[0.9rem] ml-0 gap-[0.7rem]'>
           <div className='-ml-[0.9rem]'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -26,8 +29,9 @@ const Completed = ({}) => {
         </div>
       </div>
       <div className='flex justify-center items-center flex-1 px-5 text-center -mt-28'>
-        <p className='text-[1.58rem] font-[600] leading-[2rem]'>
-          Thank you for your enquiry.<br/> We will reach out to you soon.
+        <p className='text-[1rem] md:text-[1.58rem] font-[600] leading-[2rem]'>
+          Thank you for your enquiry.
+          <br /> We will reach out to you soon.
         </p>
       </div>
     </>

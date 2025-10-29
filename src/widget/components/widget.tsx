@@ -44,6 +44,9 @@ export function Widget() {
   const [currentStep, setCurrentStep] = useState(1);
   const [shouldRender, setShouldRender] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [responsiveSizeKey, setResponsiveSizeKey] = useState<
+    keyof typeof sizeStyles
+  >((config.size || 'small') as keyof typeof sizeStyles);
   const [animationState, setAnimationState] = useState<
     'opening' | 'closing' | 'closed'
   >('closed');
@@ -57,14 +60,15 @@ export function Widget() {
   };
 
   const sizeStyles = {
-    small: { width: '17.5rem', height: '21.875rem' },
+    small: { width: '20.5rem', height: '33.875rem' },
     medium: { width: '27.75rem', height: '36rem' },
     large: { width: '27.75rem', height: '36rem' },
   };
 
   const positionKey = (config.position ||
     'bottom-right') as keyof typeof positionStyles;
-  const sizeKey = (config.size || 'medium') as keyof typeof sizeStyles;
+  // const sizeKey = (config.size || 'small') as keyof typeof sizeStyles;
+  const sizeKey = responsiveSizeKey;
   const currentPosition = positionStyles[positionKey];
   const currentSize = sizeStyles[sizeKey];
 
@@ -74,7 +78,24 @@ export function Widget() {
   if (config.debug) {
     console.log('Widget state:', { isOpen, config });
   }
+//responsive widget size
+  useEffect(() => {
+    function updateSizeKey() {
+      if (window.innerWidth <= 640) {
+        setResponsiveSizeKey('small');
+      } else {
+        setResponsiveSizeKey(
+          (config.size || 'small') as keyof typeof sizeStyles,
+        );
+      }
+    }
 
+    updateSizeKey();
+    window.addEventListener('resize', updateSizeKey);
+    return () => window.removeEventListener('resize', updateSizeKey);
+  }, [config.size]);
+
+  //widget animation on open and close
   useEffect(() => {
     if (isOpen) {
       setShouldRender(true);
@@ -178,14 +199,14 @@ export function Widget() {
           {currentStep === 1 && <StepOne handleNext={handleNext} />}
           {currentStep === 2 && <StepTwo />}
           {currentStep === 3 && <StepThree />}
-          {currentStep === 4 && <StepFour />}
+          {currentStep === 4 && <StepFour responsiveSizeKey={responsiveSizeKey}/>}
           {currentStep === 5 && <StepFive />}
           {currentStep === 6 && !isSubmitted && <StepSix />}
           {currentStep === 6 && isSubmitted && <Completed />}
           {!isSubmitted && (
-            <div className='flex items-center justify-center gap-3 mb-[0.98rem] '>
+            <div className='flex items-center justify-center gap-3 md:mb-[0.98rem] mb-[1.6rem] '>
               <button
-                className='flex items-center justify-center gap-1.5 w-[151px] h-[41px] px-7 rounded-full border border-[#F2F2F2] bg-[rgba(214,214,214,0.3)] backdrop-blur-sm shadow-lg hover:bg-[rgba(214,214,214,0.4)] transition-all'
+                className='flex items-center justify-center gap-1.5 w-[120px] md:w-[151px] h-[41px]  rounded-full border border-[#F2F2F2] bg-[rgba(214,214,214,0.3)] backdrop-blur-sm shadow-lg hover:bg-[rgba(214,214,214,0.4)] transition-all'
                 onClick={(e) => {
                   e.stopPropagation();
                   handlePrevious();
@@ -206,7 +227,7 @@ export function Widget() {
               </button>
               {currentStep === 6 ? (
                 <button
-                  className='flex items-center justify-center gap-1.5 w-[151px] h-[41px] px-7 rounded-full border border-white bg-[rgba(214,214,214,0.3)] backdrop-blur-sm shadow-lg hover:bg-[rgba(214,214,214,0.4)] transition-all'
+                  className='flex items-center justify-center gap-1.5  w-[120px] md:w-[151px] h-[41px]  rounded-full border border-white bg-[rgba(214,214,214,0.3)] backdrop-blur-sm shadow-lg hover:bg-[rgba(214,214,214,0.4)] transition-all'
                   onClick={(e) => {
                     e.stopPropagation();
                     handleSubmit();
@@ -218,7 +239,7 @@ export function Widget() {
                 </button>
               ) : (
                 <button
-                  className='flex items-center justify-center gap-1.5 w-[151px] h-[41px] px-7 rounded-full border border-white bg-[rgba(214,214,214,0.3)] backdrop-blur-sm shadow-lg hover:bg-[rgba(214,214,214,0.4)] transition-all'
+                  className='flex items-center justify-center gap-1.5  w-[120px] md:w-[151px] h-[41px] rounded-full border border-white bg-[rgba(214,214,214,0.3)] backdrop-blur-sm shadow-lg hover:bg-[rgba(214,214,214,0.4)] transition-all'
                   onClick={(e) => {
                     e.stopPropagation();
                     handleNext();

@@ -14,6 +14,7 @@ interface TimePickerProps {
   defaultHours?: number;
   defaultMinutes?: number;
   defaultPeriod?: 'AM' | 'PM';
+  responsiveSizeKey: string;
 }
 
 export function TimePicker({
@@ -22,6 +23,7 @@ export function TimePicker({
   defaultHours = 7,
   defaultMinutes = 0,
   defaultPeriod = 'AM',
+  responsiveSizeKey,
 }: TimePickerProps) {
   const [hours, setHours] = useState(defaultHours);
   const [minutes, setMinutes] = useState(defaultMinutes);
@@ -87,7 +89,7 @@ export function TimePicker({
 
   const getClockHandPosition = () => {
     const angle = getClockHandAngle();
-    const radius = 75;
+    const radius = responsiveSizeKey === 'small' ? 65 : 75;
     const x = Math.cos((angle * Math.PI) / 180) * radius;
     const y = Math.sin((angle * Math.PI) / 180) * radius;
     return { x, y };
@@ -104,15 +106,15 @@ export function TimePicker({
   const position = getClockHandPosition();
 
   return (
-    <div className='w-[15rem] h-fit bg-[#2a2a2a] rounded-lg p-3 select-none'>
+    <div className='w-[13rem] md:w-[15rem] h-fit bg-[#2a2a2a] rounded-lg p-3 select-none'>
       {/* <h3 className='text-[0.6rem] font-medium text-gray-400 mb-2 tracking-wider'>
         SELECT TIME
       </h3> */}
 
-      <div className='flex items-center gap-2 mb-4 ml-4'>
+      <div className='flex items-center gap-2 mb-2 md:mb-4 ml-4 md:ml-4'>
         <button
           onClick={() => setMode('hours')}
-          className={`w-[3.02656rem] h-[3.02656rem] rounded-lg flex items-center justify-center text-[1.9rem] font-[400] transition-colors ${
+          className={`w-[2.5rem] h-[2.5rem] md:w-[3.02656rem] md:h-[3.02656rem] rounded-lg flex items-center justify-center text-[1.9rem] font-[400] transition-colors ${
             mode === 'hours'
               ? 'bg-[#3a3a3a] text-white'
               : 'bg-transparent text-gray-500 hover:bg-[#333]'
@@ -123,7 +125,7 @@ export function TimePicker({
         <span className='text-4xl text-gray-500 font-light'>:</span>
         <button
           onClick={() => setMode('minutes')}
-          className={`w-[3.02656rem] h-[3.02656rem] rounded-lg flex items-center justify-center text-[1.9rem] font-[400] transition-colors  ${
+          className={`w-[2.5rem] h-[2.5rem] md:w-[3.02656rem] md:h-[3.02656rem]  rounded-lg flex items-center justify-center text-[1.9rem] font-[400] transition-colors  ${
             mode === 'minutes'
               ? 'bg-[#3a3a3a] text-white'
               : 'bg-transparent text-gray-500 hover:bg-[#333]'
@@ -159,7 +161,7 @@ export function TimePicker({
       </div>
 
       {/* Clock Face */}
-      <div className='relative w-[11.7rem] h-[11.7rem] mx-auto '>
+      <div className='relative w-[10.2rem] h-[10.2rem] md:w-[11.7rem] md:h-[11.7rem] mx-auto '>
         <div
           ref={clockRef}
           onMouseDown={handleMouseDown}
@@ -169,13 +171,13 @@ export function TimePicker({
           {mode === 'hours'
             ? [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((num, i) => {
                 const angle = (i * 30 - 90) * (Math.PI / 180);
-                const radius = 75;
+                const radius = responsiveSizeKey === 'small' ? 65 : 75;
                 const x = Math.cos(angle) * radius;
                 const y = Math.sin(angle) * radius;
                 return (
                   <div
                     key={num}
-                    className='absolute text-gray-400 text-sm, font-light'
+                    className='absolute text-gray-400 text-xs md:text-sm, font-light'
                     style={{
                       left: `calc(50% + ${x}px)`,
                       top: `calc(50% + ${y}px)`,
@@ -188,13 +190,13 @@ export function TimePicker({
               })
             : [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55].map((num, i) => {
                 const angle = (i * 30 - 90) * (Math.PI / 180);
-                const radius = 75;
+                const radius = responsiveSizeKey === 'small' ? 65 : 75;
                 const x = Math.cos(angle) * radius;
                 const y = Math.sin(angle) * radius;
                 return (
                   <div
                     key={num}
-                    className='absolute text-gray-400 text-sm, font-light'
+                    className='absolute text-gray-400 text-xs md:text-sm, font-light'
                     style={{
                       left: `calc(50% + ${x}px)`,
                       top: `calc(50% + ${y}px)`,
