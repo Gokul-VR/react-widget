@@ -38,7 +38,7 @@ const StepThree = ({}) => {
           </h1>
         </div>
       </div>
-      <div className='mb-[0.695rem]'>
+      <div className='mb-[0.69rem]'>
         <DatePicker />
       </div>
     </>

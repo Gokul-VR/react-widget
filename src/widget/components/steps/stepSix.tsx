@@ -37,11 +37,12 @@ const StepSix = ({}) => {
                 'Poppins, -apple-system, Roboto, Helvetica, sans-serif',
             }}
           >
-            Any specific requirements!
+            Any specific
+            <br /> requirements!
           </h1>
         </div>
       </div>
-      <div className='px-[0.6rem] md:px-[1rem] mb-[6.75rem] md:mb-[8.175rem] mt-2 md:mt-0'>
+      <div className='px-[0.6rem] md:px-[1rem] mb-[6.75rem] md:mb-[8.19rem] mt-2 md:mt-0'>
         <textarea
           value={requirements}
           onChange={(e) => setRequirements(e.target.value)}
