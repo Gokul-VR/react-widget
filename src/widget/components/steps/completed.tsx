@@ -25,9 +25,9 @@ const Completed = ({}) => {
           </div>
         </div>
       </div>
-      <div className='flex justify-center items-center flex-1 px-5 text-center -mt-24'>
-        <p className='text-[1.25rem] font-[600] leading-[1.5625rem]'>
-          Thank you for your enquiry. We will reach out to you soon.
+      <div className='flex justify-center items-center flex-1 px-5 text-center -mt-28'>
+        <p className='text-[1.58rem] font-[600] leading-[2rem]'>
+          Thank you for your enquiry.<br/> We will reach out to you soon.
         </p>
       </div>
     </>

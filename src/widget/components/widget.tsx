@@ -86,8 +86,8 @@ export function Widget() {
       const timer = setTimeout(() => {
         setShouldRender(false);
         setAnimationState('closed');
-        // setIsSubmitted(false);
-        // setCurrentStep(1);
+        setIsSubmitted(false);
+        setCurrentStep(1);
       }, 100);
 
       return () => clearTimeout(timer);
@@ -111,9 +111,9 @@ export function Widget() {
     if (currentStep === 6) {
       setIsSubmitted(true);
     }
-    // setTimeout(() => {
-    //   setIsOpen(false);
-    // }, 3000);
+    setTimeout(() => {
+      setIsOpen(false);
+    }, 3000);
   };
   const getWidgetStyles = (): CSSProperties => {
     const baseStyles: CSSProperties = {
